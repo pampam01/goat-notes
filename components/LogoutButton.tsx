@@ -4,16 +4,19 @@ import React, { useState } from 'react'
 import { Button } from './ui/button';
 import { Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 const LogoutButton = () => {
     
     const [loading, setLoading] = useState(false);
+
+    const router = useRouter();
     const handleLogout =async () => {
         setLoading(true)
 
         await new Promise((resolve, reject)=> setTimeout(resolve, 2000))
 
-        const errMessage = null 
+        const errMessage = 'errror jok' 
 
         if(!errMessage){
             toast(
@@ -22,10 +25,25 @@ const LogoutButton = () => {
                     description:"berhasil ",
                     className:'bg-red-500',
                     duration:1000,
+                    position:'bottom-right'
+
                    
                  }
             )
+        }else{
+            toast(errMessage, {
+                position:'bottom-right',
+                description:"ada error di sini",
+                style:{
+                    background:'red',
+                    color:'white',
+                    
+                }
+            })
         }
+
+
+        router.push("/")
 
         setLoading(false)
     }
