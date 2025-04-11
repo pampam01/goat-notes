@@ -16,7 +16,7 @@ const LogoutButton = () => {
 
         await new Promise((resolve, reject)=> setTimeout(resolve, 2000))
 
-        const errMessage = 'errror jok' 
+        const errMessage = null 
 
         if(!errMessage){
             toast(
@@ -30,6 +30,9 @@ const LogoutButton = () => {
                    
                  }
             )
+        router.push("/login")
+        setLoading(false)
+
         }else{
             toast(errMessage, {
                 position:'bottom-right',
@@ -40,12 +43,12 @@ const LogoutButton = () => {
                     
                 }
             })
+
+        setLoading(false)
         }
 
 
-        router.push("/")
 
-        setLoading(false)
     }
     return (
         <Button
