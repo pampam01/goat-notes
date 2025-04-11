@@ -8,7 +8,7 @@ const page = () => {
     <div>
     halo
 
-
+    
     </div>
   )
 }
