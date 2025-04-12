@@ -6,7 +6,8 @@ import Image from 'next/image'
 const page = () => {
   return (
     <div>
-    halo pampam
+    halo
+
 
     </div>
   )
