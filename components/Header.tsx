@@ -4,9 +4,12 @@ import React from 'react'
 import { Button } from './ui/button';
 import { DarkModeToggle } from './DarkmodeToggle';
 import LogoutButton from './LogoutButton';
+import { getUser } from '@/utils/supabase/server';
 
-const Header = () => {
-  const user = 1;
+const Header = async () => {
+  const user = await getUser();
+  const isLoggedIn = !!user;
+
   return (
     <header
       className='relative flex h-24 w-full items-center justify-between bg-popover px-4 sm:px-8 shadow-xl'
@@ -37,7 +40,7 @@ const Header = () => {
 
       <div className='flex items-center gap-4'>
 
-        {user ? (
+        {isLoggedIn ? (
          <LogoutButton />
         ): (
           <>
@@ -46,8 +49,8 @@ const Header = () => {
           
           variant={'secondary'}
           >
-           <Link href={"/sign-up"}>
-           Sign Up
+           <Link href={"/register"}>
+           Register
            </Link>
           </Button>
           <Button 
