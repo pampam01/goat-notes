@@ -5,6 +5,7 @@ import { Button } from './ui/button';
 import { Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
+import { logoutAction } from '@/actions/user';
 
 const LogoutButton = () => {
     
@@ -14,9 +15,7 @@ const LogoutButton = () => {
     const handleLogout =async () => {
         setLoading(true)
 
-        await new Promise((resolve, reject)=> setTimeout(resolve, 2000))
-
-        const errMessage = null 
+       const {errMessage} = await logoutAction();
 
         if(!errMessage){
             toast(

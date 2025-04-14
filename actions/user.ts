@@ -20,6 +20,18 @@ export const loginAction =async (email: string, password: string)=>{
     }
 }
 
+export const logoutAction= async () => {
+    try{
+        const {auth} = await createClient()
+        const {error} = await auth.signOut()
+        if(error) throw error
+
+        return {errMessage: null}
+    }catch(error){
+        return handleError(error)
+    }
+}
+
 
 export const signupAction = async (email: string, password:string)=> {
 
