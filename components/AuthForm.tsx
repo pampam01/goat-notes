@@ -39,7 +39,18 @@ const AuthForm = ({ type }: AuthFormProps) => {
       }
 
       if (!errMessage) {
-        router.replace(`/${type}`)
+        toast(
+          `${type} successfully`,
+          {
+            description:"berhasil",
+            style:{
+              background: 'green',
+              color: 'white',
+            },
+            position:"bottom-right"
+          }
+        )
+        router.push(`/`)
       } else {
         toast(errMessage, {
           
